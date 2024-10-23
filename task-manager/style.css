@@ -8,5 +8,23 @@
 .list-task-item{
     display: flex !important;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+}
+
+.task-buttons{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+
+
+.task-btn{
+    transition: .3s;
+    cursor:pointer;
+}
+
+.task-btn:hover{
+    transform: scale(1.2);
 }
