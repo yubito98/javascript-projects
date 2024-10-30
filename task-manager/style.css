@@ -28,3 +28,9 @@
 .task-btn:hover{
     transform: scale(1.2);
 }
+
+.tasks-progress .progress{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px 10px;
+}

@@ -2,10 +2,7 @@ const task = document.getElementById("task");
 const priority = document.getElementById("priority");
 const displayTasks = document.querySelector(".tasks");
 
-
-
 let tasks = [];
-
 
 if(!localStorage.getItem("tasks")){
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -32,6 +29,16 @@ if(!localStorage.getItem("tasks")){
     })
 }
 
+let totalTasks = document.getElementById("totalTasks");
+let displayCompletedTasks = document.getElementById("completedTasks");
+let progressBar = document.getElementById("progressBar");
+totalTasks.innerHTML = tasks.length
+
+let completedTasks = tasks.filter(item => item.completed);
+displayCompletedTasks.innerHTML = completedTasks.length
+
+let progressBarResult = (completedTasks.length / tasks.length) * 100;
+progressBar.style.width= `${progressBarResult}%`
 
 function sendTask(event){
     event.preventDefault();
