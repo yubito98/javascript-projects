@@ -1,3 +1,6 @@
+const loginForm = document.getElementById("loginForm");
+
+
 class User{
     constructor(email, password){
         this.email = email;
@@ -20,8 +23,34 @@ class Network{
 }
 
 
-const user1 = new User("Yubor", "123");
-const diaryApp = new Network("Diary App", []);
+let diaryApp = "";
 
-console.log(user1)
-console.log(diaryApp)
+if(localStorage.getItem("diaryApp")){
+    let response = JSON.parse(localStorage.getItem("diaryApp"));
+    diaryApp = new Network(response.name, response.users)
+    console.log(diaryApp)
+}else{
+    localStorage.setItem("diaryApp", JSON.stringify({name: "diaryApp", users: []}))
+    let response = JSON.parse(localStorage.getItem("diaryApp"));
+    diaryApp = new Network(response.name, response.users)
+    console.log(diaryApp)
+}
+
+
+
+
+loginForm.addEventListener("submit", (event) =>{
+    event.preventDefault();
+    const formData = new FormData(loginForm);
+    const data = Object.fromEntries(formData)
+    if(diaryApp.users.some(item => item.email == data.email)){
+        alert("Existing user")
+    }else{
+        let user = new User(data.email, data.password);
+        diaryApp.users.push(user);
+        localStorage.setItem("diaryApp", JSON.stringify(diaryApp))
+        console.log(diaryApp)
+    }
+})
+
+
