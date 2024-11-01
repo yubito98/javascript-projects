@@ -127,11 +127,11 @@ function handleTaskFilter(event){
     displayTasks.innerHTML = "";
     filterTasks.forEach(item =>{
         displayTasks.innerHTML += `
-        <li class="list-group-item list-task-item ${item.completedClass}">
-            <div>
+        <li class="row list-group-item list-task-item d-flex justify-content-between ${item.completedClass}">
+            <div class="col-12 col-md-6">
                 <span class="task-item-value">${item.task}</span>
             </div>
-            <div class="task-buttons">
+            <div class="task-buttons col-12 col-md-6">
                 <span class="task-category badge text-bg-info">${item.category}</span>
                 <span class="task-priority badge" >${item.priority}</span>
                 <svg class="task-btn task-btn-complete"   width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
