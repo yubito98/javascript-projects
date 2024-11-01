@@ -58,24 +58,26 @@ function sendTask(event){
     window.location.reload()
 }
 
+function taskDeleteButtons(){
+    const taskDeleteButtons = document.querySelectorAll(".task-btn-delete");
 
-const taskDeleteButtons = document.querySelectorAll(".task-btn-delete");
-
-taskDeleteButtons.forEach(item =>{
-    item.addEventListener("click", () =>{
-        let taskItem = item.parentNode.parentNode; 
-        let taskItemValue = taskItem.querySelector(".task-item-value").innerHTML;
-        let index = tasks.findIndex(item => item.task === taskItemValue);
-        tasks.splice(index, 1)
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        window.location.reload()
+    taskDeleteButtons.forEach(item =>{
+        item.addEventListener("click", () =>{
+            let taskItem = item.parentNode.parentNode; 
+            let taskItemValue = taskItem.querySelector(".task-item-value").innerHTML;
+            let index = tasks.findIndex(item => item.task === taskItemValue);
+            tasks.splice(index, 1)
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            window.location.reload()
+        })
     })
-})
+}
 
 
-const taskCompleteButtons = document.querySelectorAll(".task-btn-complete");
+function taskCompleteButtons (){
+    const taskCompleteButtons = document.querySelectorAll(".task-btn-complete");
 
-taskCompleteButtons.forEach(item => {
+    taskCompleteButtons.forEach(item => {
     item.addEventListener("click", () =>{
         let taskItem = item.parentNode.parentNode; 
         let taskItemValue = taskItem.querySelector(".task-item-value").innerHTML;
@@ -90,7 +92,11 @@ taskCompleteButtons.forEach(item => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
         window.location.reload()
     })    
-});
+    });
+
+}
+
+
 
 
 function tasksPriority(){
@@ -110,7 +116,7 @@ function tasksPriority(){
 }
 
 
-function handleTaskFilter(event){
+function handleTaskFilter(){
     let filterPriority = document.getElementById("filterPriority").value;
     let filterCategory = document.getElementById("filterCategory").value;
     console.log(filterPriority)
@@ -147,10 +153,14 @@ function handleTaskFilter(event){
     })
 
     tasksPriority()
+    taskDeleteButtons()
+    taskCompleteButtons()
 
 }
 
 tasksPriority()
+taskDeleteButtons()
+taskCompleteButtons()
 
 
 
