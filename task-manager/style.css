@@ -5,17 +5,14 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.list-task-item{
-    display: flex !important;
-    justify-content: space-between;
-    align-items: flex-end;
-}
+
+
 
 .task-buttons{
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-end;
-    gap: 10px;
+    gap: 5px;
 }
 
 
@@ -33,4 +30,17 @@
     padding-left: 0px;
     padding-right: 0px;
     margin: 0px 10px;
+}
+
+.list-task-item{
+    padding-right:0px !important;
+    padding-left: 0px !important;
+}
+
+
+.card-filters .form-select{
+    font-size: 14px;
+}
+h6{
+    font-size: 14px !important;
 }
